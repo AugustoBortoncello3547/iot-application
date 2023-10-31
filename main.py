@@ -23,9 +23,6 @@ def sendDataToTago(data, option):
     data = [{
         "variable": device,
         "value": data,
-        "metadata": {
-                "mqtt_topic": device
-            }
     }]
 
     usernameDevice = config(device.upper())
