@@ -31,8 +31,6 @@ def sendDataToTago(data, option):
     usernameDevice = config(device.upper())
     passwordDevice = config(device.upper() + "-TOKEN")
 
-    print(device, usernameDevice, passwordDevice)
-
     publish.single(topic, json.dumps(data), qos=1, retain=False, hostname=broker,
                port=port, client_id='', keepalive=60, auth={'username': str(usernameDevice) , 'password': str(passwordDevice) })
     
@@ -90,7 +88,7 @@ if __name__ == "__main__":
                 continue
            
             umidade = calcular_umidade_relativa(float(umidade))
-            print(f"Umidade de g/m3 em kg/m3: {umidade}")
+            print(f"Umidade relativa ( 25g/m3 de umidade máxima ): {umidade} ")
             sendDataToTago(umidade, opcao)
         elif opcao == "3":
             vibracao = input("Digite a vibração em HZ: ")
